@@ -4,9 +4,8 @@ import os
 import random
 
 app = Flask(__name__)
-app.secret_key = os.urandom(24)  # Secret key for session management
+app.secret_key = os.urandom(24)  
 
-# Define a list of Singaporean jokes
 jokes = [
     "The only thing faster than Singapore's MRT during peak hours is the way we 'chope' seats with a tissue packet.",
     "Why did the chicken cross the road in Singapore? To get to the hawker centre on the other side!",
@@ -46,17 +45,16 @@ def ai_agent_reply():
 
 @app.route("/singapore_joke", methods=["POST"])
 def singapore_joke():
-    # Choose a random joke from the list
     joke = random.choice(jokes)
     return render_template("joke.html", joke=joke)
 
-@app.route("/set_api_key", methods=["POST"])
-def set_api_key():
-    api_key = request.form.get("api_key")
-    if api_key:
-        session['openai_api_key'] = api_key
-        return redirect(url_for('index'))
-    return "API Key not provided", 400
+# @app.route("/set_api_key", methods=["POST"])
+# def set_api_key():
+#     api_key = request.form.get("api_key")
+#     if api_key:
+#         session['openai_api_key'] = api_key
+#         return redirect(url_for('index'))
+#     return "API Key not provided", 400
 
 @app.route("/prediction", methods=["GET", "POST"])
 def prediction():
