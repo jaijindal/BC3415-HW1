@@ -1,4 +1,4 @@
 flask
 gunicorn
 google.generativeai
-openai
+openai==0.28

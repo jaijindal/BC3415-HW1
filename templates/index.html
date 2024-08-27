@@ -1,14 +1,33 @@
-<h2>Welcome to Financial Robo Advisor</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+</head>
+<body>
+    <h2>Welcome to Financial Robo Advisor</h2>
 
-<form action="/ai_agent" method="post">
-    <input type="submit" value="AI Agent">
-</form>
+    <form action="/ai_agent" method="post">
+        <input type="submit" value="AI Agent">
+    </form>
 
-<form action="/prediction" method="post">
-    <input type="submit" value="prediction">
-</form>
+    <form action="/prediction" method="post">
+        <input type="submit" value="Prediction">
+    </form>
 
-<!-- Joke button -->
-<form action="/singapore_joke" method="POST">
-    <button type="submit">Get a Singapore Joke</button>
-</form>
+    <!-- Joke button -->
+    <form action="/singapore_joke" method="POST">
+        <button type="submit">Get a Singapore Joke</
+
+        </button>
+    </form>
+
+    <!-- API Key Input Form -->
+    <h3>Enter OpenAI API Key</h3>
+    <form action="/set_api_key" method="post">
+        <input type="text" name="api_key" placeholder="Enter your OpenAI API key" required>
+        <input type="submit" value="Submit API Key">
+    </form>
+</body>
+</html>
