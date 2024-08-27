@@ -10,8 +10,16 @@
 
     <form action="/ai_agent_reply" method="post">
         <h4>Please enter your question:</h4>
-        <input type="text" name="q">
-        <input type="submit" value="Enter">
+        <input type="text" name="q" required>
+        <input type="submit" value="Submit">
     </form>
+
+    <h3>Set OpenAI API Key</h3>
+    <form action="/set_api_key" method="post">
+        <input type="text" name="api_key" placeholder="Enter your OpenAI API key" required>
+        <input type="submit" value="Set API Key">
+    </form>
+
+    <a href="/">Go Back</a>
 </body>
 </html>

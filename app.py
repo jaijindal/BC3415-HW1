@@ -34,12 +34,11 @@ def ai_agent_reply():
         return redirect(url_for('index'))
     
     try:
-        response = openai.Completion.create(
-            model="text-davinci-003",  # Adjust model as necessary
-            prompt=q,
-            max_tokens=150  # Adjust max_tokens as necessary
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",  # Updated model
+            messages=[{"role": "user", "content": q}],
         )
-        r = response.choices[0].text.strip()
+        r = response.choices[0].message['content'].strip()
     except Exception as e:
         r = f"Error: {str(e)}"
     
