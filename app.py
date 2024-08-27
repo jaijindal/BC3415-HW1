@@ -1,13 +1,12 @@
 from flask import Flask, render_template, request
-import google.generativeai as palm
-import os
 import openai
+import os
 
 # Configure the API keys
-palm_api_key = "YOUR_PALM_API_KEY"
-palm.configure(api_key=palm_api_key)
+palm_api_key = os.getenv("PALM_API_KEY")
+# palm.configure(api_key=palm_api_key)  # Uncomment if you are using the PALM API
 
-os.environ["OPENAI_API_KEY"] = "YOUR_OPENAI_API_KEY"
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__)
 
@@ -24,11 +23,12 @@ def ai_agent_reply():
     q = request.form.get("q")
     try:
         # OpenAI GPT-3.5 API call
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=[{"role": "user", "content": q}],
+        response = openai.Completion.create(
+            model="text-davinci-003",  # Adjust model as necessary
+            prompt=q,
+            max_tokens=150  # Adjust max_tokens as necessary
         )
-        r = response.choices[0].message['content']
+        r = response.choices[0].text.strip()
     except Exception as e:
         r = f"Error: {str(e)}"
     
